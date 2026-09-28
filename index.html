@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>PrivilegeX - Security Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🛡️ PrivilegeX</h1>
+            <p>Interactive Privilege Escalation Simulator</p>
+            <span class="simulation-badge">
+                SIMULATED ENVIRONMENT
+            </span>
+        </header>
+
+        <!-- LOGIN SCREEN -->
+        <section id="loginScreen" class="card">
+            <h2>Select Your Role</h2>
+            <p>Choose a role to enter the virtual system.</p>
+
+            <div class="role-grid">
+                <button onclick="login('user')">
+                    👤 Normal User
+                </button>
+
+                <button onclick="login('admin')">
+                    🛡️ Administrator
+                </button>
+            </div>
+        </section>
+
+        <!-- MAIN DASHBOARD -->
+        <main id="dashboard" class="hidden">
+
+            <section class="card">
+                <h2>System Dashboard</h2>
+
+                <p>
+                    Current Role:
+                    <strong id="currentRole"></strong>
+                </p>
+
+                <p>
+                    Privilege Level:
+                    <span id="privilegeLevel"></span>
+                </p>
+
+                <button onclick="logout()">
+                    Switch Role
+                </button>
+            </section>
+
+            <section class="card">
+                <h2>System Operations</h2>
+                <p>Select an operation to test permissions.</p>
+
+                <div class="operations">
+                    <button onclick="executeAction('read')">
+                        Read Personal Files
+                    </button>
+
+                    <button onclick="executeAction('protected')">
+                        Read Protected Files
+                    </button>
+
+                    <button onclick="executeAction('install')">
+                        Install Software
+                    </button>
+
+                    <button onclick="executeAction('users')">
+                        Manage User Accounts
+                    </button>
+
+                    <button onclick="executeAction('settings')">
+                        Modify System Settings
+                    </button>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Privilege Escalation Lab</h2>
+
+                <p>
+                    Simulate a security misconfiguration
+                    that allows unauthorized elevation.
+                </p>
+
+                <label>
+                    <input type="checkbox"
+                           id="misconfiguration">
+                    Enable insecure configuration
+                </label>
+
+                <br><br>
+
+                <button onclick="attemptEscalation()">
+                    Attempt Privilege Escalation
+                </button>
+            </section>
+
+            <section class="card">
+                <h2>Operation Result</h2>
+                <div id="result">
+                    No operation executed yet.
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Security Activity Log</h2>
+
+                <button onclick="clearLogs()">
+                    Clear Logs
+                </button>
+
+                <div id="activityLog"></div>
+            </section>
+
+        </main>
+
+        <footer>
+            Educational cybersecurity simulation.
+            No real system permissions are modified.
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
